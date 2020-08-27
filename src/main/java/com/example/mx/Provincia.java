@@ -21,6 +21,9 @@ public class Provincia implements Serializable {
 
 	@Column(name = "descripcion")
 	private String descripcion;
+	
+	@Column(name = "habitantes")
+	private Integer habitantes;
 
 	public Provincia() {
 
@@ -50,4 +53,13 @@ public class Provincia implements Serializable {
 		this.descripcion = descripcion;
 	}
 
+	public Integer getHabitantes() {
+		return habitantes;
+	}
+
+	public void setHabitantes(Integer habitantes) {
+		this.habitantes = habitantes;
+	}
+
+	
 }
