@@ -3,7 +3,11 @@ package com.example.mx;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.tomcat.util.http.HeaderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,8 +67,13 @@ public class ProvinciaController {
 		return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("provincias", id.toString())).build();
 	}
 	*/
-
-	 
-	 
+	@DeleteMapping("/provincias/{id}")
+	public ResponseEntity<String> deleteProvincias(@PathVariable Long id) {
+		provinciaRepository.deleteById(id);
+		//return new ResponseEntity<>("{\"mensaje\": \"Se elimino correctamente el "+id+"\"}",HttpStatus.OK);
+		return ResponseEntity.ok()
+				.header("Content-Type", "application/json")
+				.body("{\"mensaje\": \"Se elimino correctamente el "+id+"\"}");
+}
 }
  
