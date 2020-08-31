@@ -1,5 +1,7 @@
 package com.example.mx;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "profesor")
-public class Profesor {
+public class Profesor implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

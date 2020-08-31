@@ -1,13 +1,13 @@
-INSERT INTO `matircula` (`id`, `fK_idmateria`, `fK_idalumnos`) 
+INSERT INTO `matricula` (`id`, `fK_idmateria`, `fK_idalumnos`) 
 VALUES (1, 1, 1);
 
-INSERT INTO `matircula` (`id`, `fK_idmateria`, `fK_idalumnos`) 
-VALUES (2, 3, 1);
+INSERT INTO `matricula` (`id`, `fK_idmateria`, `fK_idalumnos`) 
+VALUES (2, 3, 2);
 
 
 
-INSERT INTO `matircula` (`id`, `fK_idmateria`, `fK_idalumnos`) 
-VALUES (3, 2, 1);
+INSERT INTO `matricula` (`id`, `fK_idmateria`, `fK_idalumnos`) 
+VALUES (3, 2, 3);
 
 
 ALTER TABLE `matricula` ADD PRIMARY KEY (`id`);
