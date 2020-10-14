@@ -1,14 +1,26 @@
 com\example\mx\Cantones.class
+<<<<<<< HEAD
 com\example\mx\AlumnoRepository.class
 com\example\mx\Materias.class
 com\example\mx\Provincia.class
 com\example\mx\MatriculaRepository.class
+=======
+com\example\mx\MateriasRepository.class
+com\example\mx\CantonesRepository.class
+com\example\mx\Materias.class
+com\example\mx\Provincia.class
+>>>>>>> b6ffd4751903239fc012b53b9d6a940e68ee4b0a
 com\example\mx\ProvinciaRepository.class
 com\example\mx\ProvinciaController.class
 com\example\mx\ProfesorRepository.class
 com\example\mx\ProfesorController.class
 com\example\mx\Alumno.class
+<<<<<<< HEAD
 com\example\mx\MatriculaController.class
+=======
+com\example\mx\MateriasController.class
+com\example\mx\CantonesController.class
+>>>>>>> b6ffd4751903239fc012b53b9d6a940e68ee4b0a
 com\example\mx\Matricula.class
 com\example\mx\AlumnoController.class
 com\example\mx\ServletInitializer.class
