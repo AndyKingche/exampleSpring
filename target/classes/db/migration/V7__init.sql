@@ -3,7 +3,7 @@ CREATE TABLE `profesor` (
   `nombre` varchar(255) DEFAULT NULL,
   `apellido` varchar(255) DEFAULT NULL,
    `cedula` varchar(15) DEFAULT NULL,
-  `fechaNacimiento` varchar(255) DEFAULT NULL,
+  `fechanacimiento` varchar(255) DEFAULT NULL,
   `edad` integer,
   `direccion` varchar(255) DEFAULT NULL,
   `telefono` varchar(255) DEFAULT NULL,

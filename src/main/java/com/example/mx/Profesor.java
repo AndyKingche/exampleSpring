@@ -9,11 +9,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name = "profesor")
 public class Profesor implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO,
+	generator="native")
+	@GenericGenerator(name ="native",
+	strategy = "native")
 	private Long id;
 
 	@Column(name = "nombre")
@@ -25,8 +30,8 @@ public class Profesor implements Serializable {
 	@Column(name = "cedula")
 	private String cedula;
 	
-	@Column(name = "fechaNacimiento")
-	private String fechaNacimiento;
+	@Column(name = "fechanacimiento")
+	private String fechanacimiento;
 
 	@Column(name = "edad")
 	private Integer edad;
@@ -76,12 +81,12 @@ public class Profesor implements Serializable {
 		this.cedula = cedula;
 	}
 
-	public String getFechaNacimiento() {
-		return fechaNacimiento;
+	public String getFechanacimiento() {
+		return fechanacimiento;
 	}
 
-	public void setFechaNacimiento(String fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
+	public void setFechanacimiento(String fechanacimiento) {
+		this.fechanacimiento = fechanacimiento;
 	}
 
 	public Integer getEdad() {

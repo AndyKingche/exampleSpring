@@ -11,12 +11,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name = "alumnos")
 
 public class Alumno implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO,
+	generator="native")
+	@GenericGenerator(name ="native",
+	strategy = "native")
 	private Long id;
 
 	@Column(name = "nombre")
@@ -28,8 +33,8 @@ public class Alumno implements Serializable {
 	@Column(name = "cedula")
 	private String cedula;
 	
-	@Column(name = "fechaNacimiento")
-	private String fechaNacimiento;
+	@Column(name = "fechanacimiento")
+	private String fechanacimiento;
 
 	@Column(name = "edad")
 	private Integer edad;
@@ -43,8 +48,8 @@ public class Alumno implements Serializable {
 	@Column(name = "grado")
 	private String grado;
 	
-	@Column(name = "numeroMatricula")
-	private Integer numeroMatricula;
+	@Column(name = "numeromatricula")
+	private Integer numeromatricula;
 
 	@ManyToOne
 	@JoinColumn(name = "fK_idprovincia")
@@ -87,12 +92,22 @@ public class Alumno implements Serializable {
 		this.cedula = cedula;
 	}
 
-	public String getFechaNacimiento() {
-		return fechaNacimiento;
+	
+
+	public String getFechanacimiento() {
+		return fechanacimiento;
 	}
 
-	public void setFechaNacimiento(String fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
+	public void setFechanacimiento(String fechanacimiento) {
+		this.fechanacimiento = fechanacimiento;
+	}
+
+	public Integer getNumeromatricula() {
+		return numeromatricula;
+	}
+
+	public void setNumeromatricula(Integer numeromatricula) {
+		this.numeromatricula = numeromatricula;
 	}
 
 	public Integer getEdad() {
@@ -125,14 +140,6 @@ public class Alumno implements Serializable {
 
 	public void setGrado(String grado) {
 		this.grado = grado;
-	}
-
-	public Integer getNumeroMatricula() {
-		return numeroMatricula;
-	}
-
-	public void setNumeroMatricula(Integer numeroMatricula) {
-		this.numeroMatricula = numeroMatricula;
 	}
 
 	public Provincia getProvincia() {

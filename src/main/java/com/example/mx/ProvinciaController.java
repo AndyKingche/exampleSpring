@@ -44,7 +44,7 @@ public class ProvinciaController {
 	}
  
 	
-	@PostMapping("/provincias")
+	/*@PostMapping("/provincias")
 	public ResponseEntity<Provincia> createProvincias(@RequestBody Provincia padre)  {
 		System.out.println(padre.getNombre());
 		System.out.println(padre.getDescripcion());
@@ -60,12 +60,19 @@ public class ProvinciaController {
 		long idnueva = (page.size() + 1);
 		padre.setId(idnueva);
 		Provincia result = provinciaRepository.save(padre);
-
+		result.setId(idnueva);
 		return ResponseEntity.ok()
 				.header("Content-Type", "application/json").body(result);
 		
 	}
-
+	*/
+	
+	@PostMapping("/provincias")
+	Provincia newProvincia (@RequestBody Provincia provincia) {
+		return provinciaRepository.save(provincia);
+	}
+	
+	
 	@PutMapping("/provincias/{id}")
 	public ResponseEntity<String> updateProvincias( @RequestBody Provincia provincia, @PathVariable Long id) throws ResourceNotFoundException{
 		
