@@ -9,12 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name = "provincia")
 
 public class Provincia implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO,
+	generator="native")
+	@GenericGenerator(name ="native",
+	strategy = "native")
 	private Long id;
 
 	@Column(name = "nombre")
