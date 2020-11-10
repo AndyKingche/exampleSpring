@@ -18,6 +18,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
 
 import com.sun.istack.NotNull;
 
@@ -26,13 +27,14 @@ import com.sun.istack.NotNull;
  */
 @Entity
 @Table(name = "categoria")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+
 public class Categoria implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO,
+	generator="native")
+	@GenericGenerator(name ="native",
+	strategy = "native")
 	private Long id;
  
 

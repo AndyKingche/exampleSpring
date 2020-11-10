@@ -1,5 +1,6 @@
 package com.example.mx;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -17,15 +18,18 @@ import com.sun.istack.NotNull;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "tipo")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Tipo {
-	private static final long serialVersionUID = 1L;
-
-	@Id 
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Tipo implements Serializable {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO,
+	generator="native")
+	@GenericGenerator(name ="native",
+	strategy = "native")
 	private Long id;
 
 	@NotNull  
@@ -36,9 +40,8 @@ public class Tipo {
 	@Column(name = "descripcion", nullable = false)
 	private String descripcion;
 
-	@ManyToOne(optional = false, fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "categoria_id")
-	@NotNull
 	@JsonIgnore
 	private Categoria categoria;
 
