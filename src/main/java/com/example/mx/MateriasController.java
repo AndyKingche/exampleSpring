@@ -35,17 +35,9 @@ public class MateriasController {
 		return materias;
 	}
 	@PostMapping("/materias")
-	public ResponseEntity<Materias> createMaterias(@RequestBody Materias padre)  {
+	Materias newMaterias (@RequestBody Materias materias)  {
 			
-		if (padre.getId() != null) {
-			return ResponseEntity.badRequest()
-					.header("Content-Type", "application/json")
-					.body(null);
-			}	
-		
-		Materias result = meteriasrespoRepository.save(padre);
-		return ResponseEntity.ok()
-					.header("Content-Type", "application/json").body(result);
+	return meteriasrespoRepository.save(materias);
 	}
 	
 	@PutMapping("/materias/{id}")

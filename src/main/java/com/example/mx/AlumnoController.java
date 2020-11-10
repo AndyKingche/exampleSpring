@@ -1,6 +1,5 @@
 package com.example.mx;
 
-<<<<<<< HEAD
 import java.util.List;
 import java.util.Optional;
 
@@ -20,11 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-=======
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
->>>>>>> b6ffd4751903239fc012b53b9d6a940e68ee4b0a
 public class AlumnoController {
 	
 	@Autowired
