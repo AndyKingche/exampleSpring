@@ -15,6 +15,7 @@
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
@@ -29,25 +30,21 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="C:/Users/user/.m2/repository/org/springframework/boot/spring-boot-test/2.3.3.RELEASE/spring-boot-test-2.3.3.RELEASE.jar" sourcepath="C:/Users/user/.m2/repository/org/springframework/boot/spring-boot-test/2.3.3.RELEASE/spring-boot-test-2.3.3.RELEASE-sources.jar">
+	<classpathentry kind="src" path="target/generated-sources/annotations">
 		<attributes>
+			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="test" value="true"/>
-			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
-			<attribute name="maven.groupId" value="org.springframework.boot"/>
-			<attribute name="maven.artifactId" value="spring-boot-test"/>
-			<attribute name="maven.version" value="2.3.3.RELEASE"/>
-			<attribute name="maven.scope" value="test"/>
+			<attribute name="ignore_optional_problems" value="true"/>
+			<attribute name="m2e-apt" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/user/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/9.0.37/tomcat-embed-core-9.0.37.jar" sourcepath="C:/Users/user/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/9.0.37/tomcat-embed-core-9.0.37-sources.jar">
+	<classpathentry kind="src" output="target/test-classes" path="target/generated-test-sources/test-annotations">
 		<attributes>
+			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
-			<attribute name="maven.groupId" value="org.apache.tomcat.embed"/>
-			<attribute name="maven.artifactId" value="tomcat-embed-core"/>
-			<attribute name="maven.version" value="9.0.37"/>
-			<attribute name="maven.scope" value="provided"/>
+			<attribute name="ignore_optional_problems" value="true"/>
+			<attribute name="m2e-apt" value="true"/>
+			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
