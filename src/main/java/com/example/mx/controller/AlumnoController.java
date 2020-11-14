@@ -1,6 +1,10 @@
 package com.example.mx.controller;
 
+import static org.junit.Assert.assertThat;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -42,20 +46,12 @@ public class AlumnoController {
 		return alumno;
 	}
 	
-	@RequestMapping(value="/find/{name}",method = RequestMethod.GET)
-	public String getAlumnoFind(@PathVariable("name") String name){
-		Alumno alumno = alumnoRepository.findByName(name);
+	@RequestMapping(value="/alumnos/find/{name}", produces = { "application/json"},method = RequestMethod.GET)
+	public List<Alumno> findByName(@PathVariable("name") String name){
+		List<Alumno> alumno = alumnoRepository.findByName(name);
+
 		
-		Map<Long,String> map = null;
-		if(alumno !=null )
-		{
-			map = new HashMap<Long, String>();
-			
-				map.put(((Long)alumno.getId()), alumno.getNombre());
-			
-		}
-		System.out.println("estos son los alumnos"+ name);
-		return "estos son los alumnos"+ name;
+		return alumno;
 		
 	}
 	
