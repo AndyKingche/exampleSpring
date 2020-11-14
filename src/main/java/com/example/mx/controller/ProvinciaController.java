@@ -30,7 +30,6 @@ public class ProvinciaController {
 	@GetMapping("/provincias")
 	public List<Provincia> getAllProvincias() {
 		List<Provincia> page = provinciaRepository.findAll();
-
 		return page;
 	}
 

@@ -1,6 +1,8 @@
 package com.example.mx.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.mx.domain.Alumno;
@@ -39,12 +42,33 @@ public class AlumnoController {
 		return alumno;
 	}
 	
+<<<<<<< HEAD
 	@GetMapping("/alumnos/find/{name}")
 	public List<Alumno> getAlumnosByName(@PathVariable String name) {
 		List<Alumno> alumno = alumnoRepository.findByName(name);
 		return alumno;
 	}
 
+=======
+	@RequestMapping(value="/find/{name}",method = RequestMethod.GET)
+	public String getAlumnoFind(@PathVariable("name") String name){
+		Alumno alumno = alumnoRepository.findByName(name);
+		
+		Map<Long,String> map = null;
+		if(alumno !=null )
+		{
+			map = new HashMap<Long, String>();
+			
+				map.put(((Long)alumno.getId()), alumno.getNombre());
+			
+		}
+		System.out.println("estos son los alumnos"+ name);
+		return "estos son los alumnos"+ name;
+		
+	}
+	
+	
+>>>>>>> origin/master
 	@PostMapping("/alumnos")
 	Alumno newAlumno(@RequestBody Alumno newAlumno) {
 		return alumnoRepository.save(newAlumno);
