@@ -1,5 +1,7 @@
 package com.example.mx.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,6 @@ import com.example.mx.domain.Alumno;
 @RequestMapping("/api")
 public interface AlumnoRepository extends JpaRepository<Alumno, Long> {
 
-	//@Query("select Nombre from estudiantes WHERE Nombre like'%A%'");
-	//private Alumno findAlumno();
+	@Query(value = "SELECT * FROM alumnos WHERE nombre LIKE %?%", nativeQuery = true)
+	List<Alumno> findByName(String name);
 }

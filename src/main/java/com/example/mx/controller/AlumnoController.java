@@ -38,6 +38,12 @@ public class AlumnoController {
 		System.out.println(alumno.get());
 		return alumno;
 	}
+	
+	@GetMapping("/alumnos/find/{name}")
+	public List<Alumno> getAlumnosByName(@PathVariable String name) {
+		List<Alumno> alumno = alumnoRepository.findByName(name);
+		return alumno;
+	}
 
 	@PostMapping("/alumnos")
 	Alumno newAlumno(@RequestBody Alumno newAlumno) {
