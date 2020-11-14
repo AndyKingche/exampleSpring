@@ -17,8 +17,6 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "alumnos")
 
 public class Alumno implements Serializable {
-
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	@GenericGenerator(name = "native", strategy = "native")
