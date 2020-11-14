@@ -15,8 +15,7 @@ import com.example.mx.domain.Alumno;
 @RequestMapping("/api")
 public interface AlumnoRepository extends JpaRepository<Alumno, Long> {
 
-	@Query(value = "SELECT * FROM alumnos u WHERE u.nombre like '%:name%' ", 
-			nativeQuery= true) 
-	public List<Alumno> findByName(@Param("name") String name);
-	
+	@Query(value = "SELECT * FROM alumnos WHERE nombre LIKE %?%", nativeQuery = true)
+	List<Alumno> findByName(String name);
+
 }

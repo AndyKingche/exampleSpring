@@ -49,13 +49,10 @@ public class AlumnoController {
 	@RequestMapping(value="/alumnos/find/{name}", produces = { "application/json"},method = RequestMethod.GET)
 	public List<Alumno> findByName(@PathVariable("name") String name){
 		List<Alumno> alumno = alumnoRepository.findByName(name);
-
 		
 		return alumno;
-		
-	}
-	
-	
+		}
+
 	@PostMapping("/alumnos")
 	Alumno newAlumno(@RequestBody Alumno newAlumno) {
 		return alumnoRepository.save(newAlumno);
