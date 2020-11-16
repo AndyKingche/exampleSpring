@@ -40,13 +40,9 @@ public class CantonesController {
 	}
 
 	@PostMapping("/cantones")
-	public ResponseEntity<Cantones> createCantones(@RequestBody Cantones padre) {
+	public Cantones createCantones(@RequestBody Cantones padre) {
 
-		if (padre.getId() != null) {
-			return ResponseEntity.badRequest().header("Content-Type", "application/json").body(null);
-		}
-		Cantones result = cantonesrespoRepository.save(padre);
-		return ResponseEntity.ok().header("Content-Type", "application/json").body(result);
+	return cantonesrespoRepository.save(padre);
 	}
 
 	@PutMapping("/cantones/{id}")

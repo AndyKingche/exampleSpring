@@ -1,12 +1,6 @@
 package com.example.mx.controller;
 
-import static org.junit.Assert.assertThat;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.mx.domain.Alumno;
+import com.example.mx.domain.Cantones;
 import com.example.mx.repository.AlumnoRepository;
+
 
 @RestController
 @RequestMapping("/api")
@@ -54,8 +50,10 @@ public class AlumnoController {
 		}
 
 	@PostMapping("/alumnos")
-	Alumno newAlumno(@RequestBody Alumno newAlumno) {
+	public Alumno createAlumno(@RequestBody Alumno newAlumno) {
+		
 		return alumnoRepository.save(newAlumno);
+		
 	}
 
 	@PutMapping("/alumnos/{id}")
