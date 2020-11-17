@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.mx.domain.Categoria;
+import com.example.mx.domain.Tipo;
 import com.example.mx.repository.CategoriaRepository;
 
 @RestController
@@ -49,7 +50,8 @@ public class CategoriaController {
 
 		findCategoria.setNombre(categoria.getNombre());
 		findCategoria.setDescripcion(categoria.getDescripcion());
-		
+		findCategoria.setTipo(categoria.getTipo());
+
 		
 		Categoria actualizarCategoria = categoriaRepository.save(findCategoria);
 

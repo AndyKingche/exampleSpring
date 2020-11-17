@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.mx.domain.Alumno;
 import com.example.mx.domain.Tipo;
 import com.example.mx.repository.TipoRepository;
 
@@ -63,6 +65,12 @@ public class TipoContoller {
 		return ResponseEntity.ok().header("Content-Type", "application/json")
 				.body("{\"mensaje\": \"Se elimino correctamente el " + id + "\"}");
 	}
+	@RequestMapping(value="/tipos/find/{id}", produces = { "application/json"},method = RequestMethod.GET)
+	public List<Tipo> findByName(@PathVariable("id") Integer id){
+		List<Tipo> tipo = tipoRepository.findByForeingKey(id);
+		System.out.println("este es el tipo"+tipo);
+		return tipo;
+		}
 
 
 
