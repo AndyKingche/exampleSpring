@@ -23,7 +23,6 @@ import com.example.mx.repository.AlumnoRepository;
 
 @RestController
 @RequestMapping("/api")
-
 public class AlumnoController {
 
 	@Autowired
