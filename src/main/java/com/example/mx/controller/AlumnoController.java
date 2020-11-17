@@ -1,12 +1,6 @@
 package com.example.mx.controller;
 
-import static org.junit.Assert.assertThat;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +21,6 @@ import com.example.mx.repository.AlumnoRepository;
 
 @RestController
 @RequestMapping("/api")
-
 public class AlumnoController {
 
 	@Autowired
