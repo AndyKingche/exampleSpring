@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.mx.domain.Alumno;
+import com.example.mx.domain.Cantones;
 import com.example.mx.repository.AlumnoRepository;
+
 
 @RestController
 @RequestMapping("/api")
@@ -47,8 +49,10 @@ public class AlumnoController {
 		}
 
 	@PostMapping("/alumnos")
-	Alumno newAlumno(@RequestBody Alumno newAlumno) {
+	public Alumno createAlumno(@RequestBody Alumno newAlumno) {
+		
 		return alumnoRepository.save(newAlumno);
+		
 	}
 
 	@PutMapping("/alumnos/{id}")

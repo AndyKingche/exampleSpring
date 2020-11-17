@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.mx.domain.Profesor;
@@ -41,6 +42,14 @@ public class ProfesorController {
 	Profesor newProfesor(@RequestBody Profesor profesor) {
 		return profesorRepository.save(profesor);
 	}
+	@RequestMapping(value="/profesores/find/{name}", produces = { "application/json"},method = RequestMethod.GET)
+	public List<Profesor> findByName(@PathVariable("name") String name){
+		
+		List<Profesor> profesor = profesorRepository.findByName(name);
+		
+		return profesor;
+	}
+	
 
 	@PutMapping("/profesores/{id}")
 	public ResponseEntity<String> updateProfesor(@RequestBody Profesor profesor, @PathVariable Long id)
