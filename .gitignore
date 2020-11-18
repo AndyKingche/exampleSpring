@@ -1,7 +1,8 @@
 /pom.xml
 # Created by https://www.toptal.com/developers/gitignore/api/maven
 # Edit at https://www.toptal.com/developers/gitignore?templates=maven
-application.properties
+src/main/resources/application.properties
+
 
 ### Maven ###
 target/
@@ -17,3 +18,4 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/maven
+ target/classes/application.properties
