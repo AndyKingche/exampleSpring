@@ -68,7 +68,7 @@ public class TipoContoller {
 	@RequestMapping(value="/tipos/find/{id}", produces = { "application/json"},method = RequestMethod.GET)
 	public List<Tipo> findByName(@PathVariable("id") Integer id){
 		List<Tipo> tipo = tipoRepository.findByForeingKey(id);
-		System.out.println("este es el tipo"+tipo);
+	
 		return tipo;
 		}
 
