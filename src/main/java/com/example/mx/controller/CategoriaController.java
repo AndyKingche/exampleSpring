@@ -43,6 +43,7 @@ public class CategoriaController {
 	Categoria newCategoria(@RequestBody Categoria newCategoria) {
 		System.out.print("ES EL TIPO"+newCategoria.getTipo());
 		System.out.print("ES LA CATEGORIA"+categoriaRepository.save(newCategoria));
+
 		return categoriaRepository.save(newCategoria);
 	}
 
