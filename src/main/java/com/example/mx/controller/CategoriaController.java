@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.mx.domain.Categoria;
@@ -40,6 +41,8 @@ public class CategoriaController {
 
 	@PostMapping("/categorias")
 	Categoria newCategoria(@RequestBody Categoria newCategoria) {
+		System.out.print("ES EL TIPO"+newCategoria.getTipo());
+		System.out.print("ES LA CATEGORIA"+categoriaRepository.save(newCategoria));
 		return categoriaRepository.save(newCategoria);
 	}
 
@@ -57,6 +60,13 @@ public class CategoriaController {
 
 		return ResponseEntity.ok().header("Content-Type", "application/json")
 				.body("{\"mensaje\": \"La categoria se actualizo correctamente " + "" + "\"}");
+	}
+	
+	@RequestMapping(value="/categorias/find/{name}", produces = {"application/json"}, method= RequestMethod.GET)
+		public List<Categoria> findByName(@PathVariable("name") String name){
+		List<Categoria> categoria = categoriaRepository.findByName(name);
+		
+		return categoria;
 	}
 
 	@DeleteMapping("/categorias/{id}")

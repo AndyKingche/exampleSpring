@@ -71,7 +71,11 @@ public class TipoContoller {
 	
 		return tipo;
 		}
-
-
-
+	
+	@RequestMapping(value="/tipos/number/{id}",produces = {"application/json"},method= RequestMethod.GET)
+	public int numberTipo(@PathVariable("id") Integer id) {
+		int numeroTipo= tipoRepository.numeroTipo(id);
+		System.out.println("hay.."+numeroTipo);
+		return numeroTipo;
+	}
 }

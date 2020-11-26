@@ -11,5 +11,8 @@ import com.example.mx.domain.Tipo;
 public interface TipoRepository extends JpaRepository <Tipo, Long> {
 	@Query(value = "SELECT * FROM tipo WHERE categoria_id =?", nativeQuery = true)
 	List<Tipo> findByForeingKey(Integer id);
+	
+	@Query(value="SELECT COUNT(*) FROM tipo WHERE categoria_id=? ", nativeQuery = true)
+	int numeroTipo(Integer id);
 
 }
