@@ -40,6 +40,7 @@ public class CategoriaController {
 
 	@PostMapping("/categorias")
 	Categoria newCategoria(@RequestBody Categoria newCategoria) {
+		System.out.println(newCategoria.getTipo());
 		return categoriaRepository.save(newCategoria);
 	}
 
