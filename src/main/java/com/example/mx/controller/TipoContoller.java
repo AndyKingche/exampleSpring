@@ -35,6 +35,7 @@ public class TipoContoller {
 	@GetMapping("/tipos/{id}")
 	public Optional<Tipo> getTipos(@PathVariable Long id) throws ResourceNotFoundException {
 		Optional<Tipo> tipo = tipoRepository.findById(id);
+		System.out.print("estoy adentro de getTipos");
 		System.out.println(tipo.get());
 		return tipo;
 	}
@@ -45,14 +46,14 @@ public class TipoContoller {
 	}
 
 	@PutMapping("/tipos/{id}")
-	public ResponseEntity<String> updateTipos(@RequestBody Tipo tipo, @PathVariable long id)
+	public ResponseEntity<String> updateTipos(@RequestBody Tipo tipo, @PathVariable Long id)
 			throws ResourceNotFoundException {
 		Tipo findTipo = getTipos(id).orElseThrow(() -> new ResourceNotFoundException("No se encontro id"));
 
 		findTipo.setNombre(tipo.getNombre());
 		findTipo.setDescripcion(tipo.getDescripcion());
 		findTipo.setCategoria(tipo.getCategoria());
-		
+		System.out.println(tipo.getCategoria());
 		Tipo actualizarTipo = tipoRepository.save(findTipo);
 
 		return ResponseEntity.ok().header("Content-Type", "application/json")
@@ -78,4 +79,15 @@ public class TipoContoller {
 		System.out.println("hay.."+numeroTipo);
 		return numeroTipo;
 	}
+	
+	@RequestMapping(value="/tipos/categoria/{id}/{idcat}",produces = {"application/json"},method= RequestMethod.PUT)
+	public String encontrarTipo(@RequestBody Tipo tipo, @PathVariable("id") Integer id, @PathVariable("idcat") Integer idcat) {
+		System.out.println("SI ESNTREEE NO TE PREUCPES "+ tipo.getNombre()+" "+id);
+		
+		
+		List<Tipo> tipoActualizado= tipoRepository.actualizarTipo(tipo.getNombre(), tipo.getDescripcion(),idcat,id);
+		System.out.println("hay.."+tipoActualizado);
+		return "Si entre";
+	}
+	
 }
