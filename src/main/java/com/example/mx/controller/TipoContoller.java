@@ -3,7 +3,12 @@ package com.example.mx.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,9 +21,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.example.mx.domain.Alumno;
 import com.example.mx.domain.Tipo;
 import com.example.mx.repository.TipoRepository;
+
 
 @RestController
 @RequestMapping("/api")
@@ -60,12 +67,26 @@ public class TipoContoller {
 				.body("{\"mensaje\": \"La categoria se actualizo correctamente " + "" + "\"}");
 	}
 
-	@DeleteMapping("/tipos/{id}")
+	@RequestMapping(value="/tipos/{id}", produces = { "application/json"},method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteTipos(@PathVariable Long id) {
-		tipoRepository.deleteById(id);
+		try {
+			Tipo findTipo = getTipos(id).orElseThrow(() -> new ResourceNotFoundException("No se encontro id"));
+			if(findTipo!=null) {
+				int eliminar = tipoRepository.eliminarTipo(id.intValue());
+				System.out.print("SI SE ELIMINO el id "+ id);
+				return ResponseEntity.ok().header("Content-Type", "application/json")
+						.body("{\"mensaje\": \"Se elimino correctamente el " + id + "\"}");
+			}
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.print("EXISTE UN ERROR NO SEA GIL, REVISE EL CODIGO "+ e);
+		}
+		
 		return ResponseEntity.ok().header("Content-Type", "application/json")
-				.body("{\"mensaje\": \"Se elimino correctamente el " + id + "\"}");
+				.body("{\"mensaje\": \"No Se elimino correctamente el " + id + "\"}");
 	}
+	
 	@RequestMapping(value="/tipos/find/{id}", produces = { "application/json"},method = RequestMethod.GET)
 	public List<Tipo> findByName(@PathVariable("id") Integer id){
 		List<Tipo> tipo = tipoRepository.findByForeingKey(id);
@@ -81,13 +102,14 @@ public class TipoContoller {
 	}
 	
 	@RequestMapping(value="/tipos/categoria/{id}/{idcat}",produces = {"application/json"},method= RequestMethod.PUT)
-	public String encontrarTipo(@RequestBody Tipo tipo, @PathVariable("id") Integer id, @PathVariable("idcat") Integer idcat) {
-		System.out.println("SI ESNTREEE NO TE PREUCPES "+ tipo.getNombre()+" "+id);
+	public int encontrarTipo(@RequestBody Tipo tipo, @PathVariable("id") Integer id, @PathVariable("idcat") Integer idcat) {
+		System.out.println("SI ESNTREEE NO TE PREUCPES "+ tipo.getNombre()+" categoria_id: "+idcat+" id: "+id);
 		
 		
-		List<Tipo> tipoActualizado= tipoRepository.actualizarTipo(tipo.getNombre(), tipo.getDescripcion(),idcat,id);
+		int tipoActualizado= tipoRepository.actualizarTipo(tipo.getNombre(), tipo.getDescripcion(),idcat,id);
 		System.out.println("hay.."+tipoActualizado);
-		return "Si entre";
+		return tipoActualizado;
 	}
+	
 	
 }

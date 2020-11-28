@@ -82,7 +82,7 @@ public class CategoriaController {
 		}*/
 	
 		final Categoria actualizarCategoria = categoriaRepository.save(findCategoria);
-		System.out.println(actualizarCategoria);
+		
 		return ResponseEntity.ok().header("Content-Type", "application/json")
 				.body("{\"mensaje\": \"La categoria se actualizo correctamente " + "" + "\"}");
 }

@@ -25,6 +25,7 @@ public class Categoria  implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	@GenericGenerator(name = "native", strategy = "native")
+	@Column(name = "id")
 	private Long id;
 	
 	@Column(name = "nombre", nullable = false, unique = true)
