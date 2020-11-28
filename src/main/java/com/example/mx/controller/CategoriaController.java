@@ -19,12 +19,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.mx.domain.Categoria;
 import com.example.mx.domain.Tipo;
 import com.example.mx.repository.CategoriaRepository;
+import com.example.mx.repository.TipoRepository;
+import com.example.mx.controller.TipoContoller;
 
 @RestController
 @RequestMapping("/api")
 public class CategoriaController {
 	@Autowired
 	CategoriaRepository categoriaRepository;
+	TipoRepository tipoRepository;
+	TipoContoller tipocontroller;
 
 	@GetMapping("/categorias")
 	public List<Categoria> getAllCategorias() {
@@ -35,10 +39,16 @@ public class CategoriaController {
 	@GetMapping("/categorias/{id}")
 	public Optional<Categoria> getCategorias(@PathVariable Long id) throws ResourceNotFoundException {
 		Optional<Categoria> categoria = categoriaRepository.findById(id);
-		System.out.println(categoria.get());
+		//System.out.println(categoria.get());
 		return categoria;
 	}
 
+	public Optional<Tipo> getTipos(@PathVariable Long id) throws ResourceNotFoundException {
+		Optional<Tipo> tipo = tipoRepository.findById(id);
+		System.out.print("estoy adentro de getTipos");
+		System.out.println(tipo.get());
+		return tipo;
+	}
 	@PostMapping("/categorias")
 	Categoria newCategoria(@RequestBody Categoria newCategoria) {
 		System.out.print("ES EL TIPO"+newCategoria.getTipo());
@@ -48,20 +58,35 @@ public class CategoriaController {
 	}
 
 	@PutMapping("/categorias/{id}")
-	public ResponseEntity<String> updateCategorias(@RequestBody Categoria categoria, @PathVariable long id)
+	public ResponseEntity<String> updateCategorias(@RequestBody Categoria categoria, @PathVariable Long id)
 			throws ResourceNotFoundException {
-		Categoria findCategoria = getCategorias(id).orElseThrow(() -> new ResourceNotFoundException("No se encontro id"));
+		Categoria findCategoria = getCategorias(id)
+				.orElseThrow(() -> new ResourceNotFoundException("No se encontro id"));
 
 		findCategoria.setNombre(categoria.getNombre());
 		findCategoria.setDescripcion(categoria.getDescripcion());
-		findCategoria.setTipo(categoria.getTipo());
-
 		
-		Categoria actualizarCategoria = categoriaRepository.save(findCategoria);
-
+		/*for(Tipo x : categoria.getTipo()) {
+		System.out.print("este es el id");
+		System.out.print(x.getId());
+		System.out.print(x.getNombre());
+		System.out.print(x.getDescripcion());
+			 Tipo findTipo= getTipos(x.getId()).
+					orElseThrow(()->new ResourceNotFoundException("No se encontro id"));
+			System.out.println(findTipo);
+			findTipo.setNombre(x.getNombre());
+			findTipo.setDescripcion(x.getDescripcion());
+			//findTipo.setCategoria(x.getCategoria());	
+			final Tipo actualizarTipo = tipoRepository.save(findTipo);			
+			System.out.println(actualizarTipo);	
+		}*/
+	
+		final Categoria actualizarCategoria = categoriaRepository.save(findCategoria);
+		System.out.println(actualizarCategoria);
 		return ResponseEntity.ok().header("Content-Type", "application/json")
 				.body("{\"mensaje\": \"La categoria se actualizo correctamente " + "" + "\"}");
-	}
+}
+	
 	
 	@RequestMapping(value="/categorias/find/{name}", produces = {"application/json"}, method= RequestMethod.GET)
 		public List<Categoria> findByName(@PathVariable("name") String name){
@@ -77,5 +102,6 @@ public class CategoriaController {
 				.body("{\"mensaje\": \"Se elimino correctamente el " + id + "\"}");
 	}
 
+	
 
 }
