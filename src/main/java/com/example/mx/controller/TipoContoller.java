@@ -79,7 +79,7 @@ public class TipoContoller {
 			}
 			
 		}catch (Exception e) {
-			// TODO: handle exception
+			
 			System.out.print("EXISTE UN ERROR NO SEA GIL, REVISE EL CODIGO "+ e);
 		}
 		
@@ -100,16 +100,37 @@ public class TipoContoller {
 		System.out.println("hay.."+numeroTipo);
 		return numeroTipo;
 	}
-	
+	@Transactional
+	@Modifying
 	@RequestMapping(value="/tipos/categoria/{id}/{idcat}",produces = {"application/json"},method= RequestMethod.PUT)
-	public int encontrarTipo(@RequestBody Tipo tipo, @PathVariable("id") Integer id, @PathVariable("idcat") Integer idcat) {
+	public int encontrarTipo(@RequestBody Tipo tipo, @PathVariable("id") Long id, @PathVariable("idcat") Integer idcat) {
+		int tipoActualizado=0;
 		System.out.println("SI ESNTREEE NO TE PREUCPES "+ tipo.getNombre()+" categoria_id: "+idcat+" id: "+id);
-		
-		
-		int tipoActualizado= tipoRepository.actualizarTipo(tipo.getNombre(), tipo.getDescripcion(),idcat,id);
-		System.out.println("hay.."+tipoActualizado);
+		try {
+			if(id!=-1) {
+				Tipo findTipo = getTipos(id).orElseThrow(() -> new ResourceNotFoundException("No se encontro id"));
+				
+				if(findTipo!=null ) {
+				tipoActualizado= tipoRepository.actualizarTipo(tipo.getNombre(), tipo.getDescripcion(),idcat,id.intValue());
+				System.out.println("hay.."+tipoActualizado);	
+				
+			}else {
+				tipoActualizado=-2;
+			}
+			
+			}else{
+				System.out.println("Entre a un nuevo Tipo");
+				int nuevoTipo = tipoRepository.ingresarTipo(tipo.getNombre(), tipo.getDescripcion(), idcat);
+				System.out.println("hay.."+nuevoTipo);
+			}
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("ERROR***********************"+e);
+		}
 		return tipoActualizado;
-	}
+		
+}
 	
 	
 }
