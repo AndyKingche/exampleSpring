@@ -100,6 +100,7 @@ public class TipoContoller {
 		System.out.println("hay.."+numeroTipo);
 		return numeroTipo;
 	}
+
 	@Transactional
 	@Modifying
 	@RequestMapping(value="/tipos/categoria/{id}/{idcat}",produces = {"application/json"},method= RequestMethod.PUT)
