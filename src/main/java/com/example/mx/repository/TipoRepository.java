@@ -21,6 +21,8 @@ public interface TipoRepository extends JpaRepository <Tipo, Long> {
 	@Query(value="SELECT COUNT(*) FROM tipo WHERE categoria_id=? ", nativeQuery = true)
 	int numeroTipo(Integer id);	
 	
+	@Transactional
+	@Modifying
 	@Query(value="UPDATE tipo SET nombre=?, descripcion=?, categoria_id=? WHERE id=?", nativeQuery = true)
 		int actualizarTipo(String nombre, String descripcion, Integer categoria_id,Integer id);
 	

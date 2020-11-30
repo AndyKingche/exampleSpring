@@ -101,6 +101,8 @@ public class TipoContoller {
 		return numeroTipo;
 	}
 	
+	@Transactional
+	@Modifying
 	@RequestMapping(value="/tipos/categoria/{id}/{idcat}",produces = {"application/json"},method= RequestMethod.PUT)
 	public int encontrarTipo(@RequestBody Tipo tipo, @PathVariable("id") Integer id, @PathVariable("idcat") Integer idcat) {
 		System.out.println("SI ESNTREEE NO TE PREUCPES "+ tipo.getNombre()+" categoria_id: "+idcat+" id: "+id);
