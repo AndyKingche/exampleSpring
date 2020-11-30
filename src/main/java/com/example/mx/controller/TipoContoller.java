@@ -106,6 +106,7 @@ public class TipoContoller {
 	public int encontrarTipo(@RequestBody Tipo tipo, @PathVariable("id") Long id, @PathVariable("idcat") Integer idcat) {
 		int tipoActualizado=0;
 		System.out.println("SI ESNTREEE NO TE PREUCPES "+ tipo.getNombre()+" categoria_id: "+idcat+" id: "+id);
+
 		try {
 			if(id!=-1) {
 				Tipo findTipo = getTipos(id).orElseThrow(() -> new ResourceNotFoundException("No se encontro id"));
@@ -128,6 +129,7 @@ public class TipoContoller {
 			// TODO: handle exception
 			System.out.println("ERROR***********************"+e);
 		}
+
 		return tipoActualizado;
 		
 }

@@ -20,8 +20,9 @@ public interface TipoRepository extends JpaRepository <Tipo, Long> {
 	List<Tipo> findByForeingKey(Integer id);
 	
 	@Query(value="SELECT COUNT(*) FROM tipo WHERE categoria_id=? ", nativeQuery = true)
-	int numeroTipo(Integer id);
+	int numeroTipo(Integer id);	
 	
+
 	@Modifying
 	@Query(value="UPDATE tipo "
 			+ "SET nombre=?, descripcion=?, "
@@ -33,6 +34,7 @@ public interface TipoRepository extends JpaRepository <Tipo, Long> {
 	@Query(value="INSERT INTO tipo (nombre, descripcion, categoria_id) values (?1,?2,?3) ", nativeQuery= true)
 	int ingresarTipo(String nombre, String descripcion, Integer categoria);
 	
+
 	@Query(value="DELETE FROM tipo WHERE id=? ", nativeQuery = true)
 	int eliminarTipo(Integer id);
 	
