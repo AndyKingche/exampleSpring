@@ -84,9 +84,8 @@ public class TipoContoller {
 	public String encontrarTipo(@RequestBody Tipo tipo, @PathVariable("id") Integer id, @PathVariable("idcat") Integer idcat) {
 		System.out.println("SI ESNTREEE NO TE PREUCPES "+ tipo.getNombre()+" "+id);
 		
-		
-		List<Tipo> tipoActualizado= tipoRepository.actualizarTipo(tipo.getNombre(), tipo.getDescripcion(),idcat,id);
-		System.out.println("hay.."+tipoActualizado);
+		int tipoActualizado= tipoRepository.actualizarTipo(tipo.getNombre(), tipo.getDescripcion(),idcat,id);
+		System.out.println("Si entre mijo rey "+tipoActualizado);
 		return "Si entre";
 	}
 	
