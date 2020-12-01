@@ -8,9 +8,10 @@ CREATE TABLE `alumnos` (
   `direccion` varchar(255) DEFAULT NULL,
   `telefono` varchar(255) DEFAULT NULL,
   `grado` varchar(255) DEFAULT NULL,
- `numeromatricula` integer,
-
-   `fK_idprovincia` bigint(20),
-   FOREIGN KEY (`fK_idprovincia`) REFERENCES provincia(`id`)
+  `numeromatricula` integer,
+  `fK_idprovincia` bigint(20),
+   FOREIGN KEY (`fK_idprovincia`) REFERENCES provincia(`id`),
+  `fK_cantones` bigint(20),
+   FOREIGN KEY (`fK_cantones`) REFERENCES cantones(`id`)
   
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

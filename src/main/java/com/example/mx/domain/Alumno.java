@@ -54,6 +54,10 @@ public class Alumno implements Serializable {
 	@JoinColumn(name = "fK_idprovincia")
 	private Provincia provincia;
 
+	@ManyToOne
+	@JoinColumn(name = "fK_cantones")
+	private Cantones cantones;
+
 	public Alumno() {
 
 	}
@@ -146,4 +150,11 @@ public class Alumno implements Serializable {
 		this.provincia = provincia;
 	}
 
+	public Cantones getCantones() {
+		return cantones;
+	}
+
+	public void setCantones(Cantones cantones) {
+		this.cantones = cantones;
+	}
 }
