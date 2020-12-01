@@ -40,7 +40,7 @@ public class Tipo implements Serializable{
 	@JoinColumn(name = "categoria_id")
 	@JsonIgnore
 	private Categoria categoria;
-
+	
 	public Long getId() {
 		return id;
 	}
