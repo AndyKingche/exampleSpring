@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.mx.domain.Cantones;
@@ -70,5 +71,14 @@ public class CantonesController {
 		return ResponseEntity.ok().header("Content-Type", "application/json")
 				.body("{\"mensaje\": \"Se elimino correctamente el " + id + "\"}");
 	}
+	
+	@RequestMapping(name="/cantones/provincia/{id}", produces= {"application/json"},method=RequestMethod.GET)
+	public List<Cantones> cantonesProvincia(@PathVariable Long id) throws ResourceNotFoundException {
+		
+		List<Cantones> listacantones = cantonesrespoRepository.encontrarCanton(id.intValue());
+		
+		return listacantones;
+	}
+	
 
 }
