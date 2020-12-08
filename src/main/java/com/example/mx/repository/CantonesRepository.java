@@ -13,7 +13,7 @@ import com.example.mx.domain.Cantones;
 @RequestMapping("/api")
 public interface CantonesRepository extends JpaRepository<Cantones, Long> {
 	
-	@Query(value="SELECT * FROM cantones WHERE fk_id=?")
+	@Query(value="SELECT * FROM cantones WHERE fk_id=?", nativeQuery = true)
 	List<Cantones> encontrarCanton(Integer fk_id);
 
 }
