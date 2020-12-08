@@ -71,6 +71,7 @@ public class AlumnoController {
 		findAlumno.setGrado(alumno.getGrado());
 		findAlumno.setNumeromatricula(alumno.getNumeromatricula());
 		findAlumno.setProvincia(alumno.getProvincia());
+		findAlumno.setCantones(alumno.getCantones());
 		Alumno actualizarAlumno = alumnoRepository.save(findAlumno);
 
 		return ResponseEntity.ok().header("Content-Type", "application/json")

@@ -9,5 +9,6 @@ import com.example.mx.domain.Provincia;
 @RestController
 @RequestMapping("/api")
 public interface ProvinciaRepository extends JpaRepository<Provincia, Long> {
+	
 
 }

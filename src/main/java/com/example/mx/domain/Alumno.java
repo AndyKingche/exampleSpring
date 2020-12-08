@@ -53,6 +53,7 @@ public class Alumno implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "fK_idprovincia")
 	private Provincia provincia;
+	
 
 	@ManyToOne
 	@JoinColumn(name = "fK_cantones")
