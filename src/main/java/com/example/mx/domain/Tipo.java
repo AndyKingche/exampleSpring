@@ -41,6 +41,12 @@ public class Tipo implements Serializable{
 	@JsonIgnore
 	private Categoria categoria;
 	
+	@ManyToOne
+	@JoinColumn(name = "estudiante_id")
+	private Alumno alumno;
+	
+	
+
 	public Long getId() {
 		return id;
 	}
@@ -63,6 +69,13 @@ public class Tipo implements Serializable{
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	public Alumno getAlumno() {
+		return alumno;
+	}
+
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
 	}
 
 	public Categoria getCategoria() {
