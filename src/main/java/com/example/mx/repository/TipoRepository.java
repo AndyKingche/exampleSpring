@@ -26,13 +26,13 @@ public interface TipoRepository extends JpaRepository <Tipo, Long> {
 	@Modifying
 	@Query(value="UPDATE tipo "
 			+ "SET nombre=?, descripcion=?, "
-			+ "categoria_id=? WHERE id=?"
+			+ "categoria_id=?, estudiante_id=? WHERE id=?"
 			, nativeQuery = true)
-		int actualizarTipo(String nombre, String descripcion, Integer categoria_id,Integer id);
+		int actualizarTipo(String nombre, String descripcion, Integer categoria_id,Integer estudiante_id,Integer id);
 	
 	@Modifying
-	@Query(value="INSERT INTO tipo (nombre, descripcion, categoria_id) values (?1,?2,?3) ", nativeQuery= true)
-	int ingresarTipo(String nombre, String descripcion, Integer categoria);
+	@Query(value="INSERT INTO tipo (nombre, descripcion, categoria_id,estudiante_id) values (?1,?2,?3,?4) ", nativeQuery= true)
+	int ingresarTipo(String nombre, String descripcion, Integer categoria, Integer estudiante);
 	
 
 	@Query(value="DELETE FROM tipo WHERE id=? ", nativeQuery = true)

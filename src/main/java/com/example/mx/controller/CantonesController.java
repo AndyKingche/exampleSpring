@@ -74,7 +74,7 @@ public class CantonesController {
 	
 	@RequestMapping(value="/cantones/provincia/{id}", produces= {"application/json"},method=RequestMethod.GET)
 	public List<Cantones> cantonesProvincia(@PathVariable Long id) throws ResourceNotFoundException {
-		
+		System.out.print("si entre "+ id);
 		List<Cantones> listacantones = cantonesrespoRepository.encontrarCanton(id.intValue());
 		
 		return listacantones;

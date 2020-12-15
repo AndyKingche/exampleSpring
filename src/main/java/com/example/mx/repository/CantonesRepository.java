@@ -14,6 +14,7 @@ import com.example.mx.domain.Cantones;
 public interface CantonesRepository extends JpaRepository<Cantones, Long> {
 	
 	@Query(value="SELECT * FROM cantones WHERE fk_id=?", nativeQuery = true)
-	List<Cantones> encontrarCanton(Integer fk_id);
+	List<Cantones> encontrarCanton(Integer id);
+
 
 }

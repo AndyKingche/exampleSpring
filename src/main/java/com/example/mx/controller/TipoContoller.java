@@ -103,8 +103,8 @@ public class TipoContoller {
 
 	@Transactional
 	@Modifying
-	@RequestMapping(value="/tipos/categoria/{id}/{idcat}",produces = {"application/json"},method= RequestMethod.PUT)
-	public int encontrarTipo(@RequestBody Tipo tipo, @PathVariable("id") Long id, @PathVariable("idcat") Integer idcat) {
+	@RequestMapping(value="/tipos/categoria/{id}/{idcat}/{idest}",produces = {"application/json"},method= RequestMethod.PUT)
+	public int encontrarTipo(@RequestBody Tipo tipo, @PathVariable("id") Long id, @PathVariable("idcat") Integer idcat,@PathVariable("idest") Integer idest) {
 		int tipoActualizado=0;
 		System.out.println("SI ESNTREEE NO TE PREUCPES "+ tipo.getNombre()+" categoria_id: "+idcat+" id: "+id);
 
@@ -113,7 +113,7 @@ public class TipoContoller {
 				Tipo findTipo = getTipos(id).orElseThrow(() -> new ResourceNotFoundException("No se encontro id"));
 				
 				if(findTipo!=null ) {
-				tipoActualizado= tipoRepository.actualizarTipo(tipo.getNombre(), tipo.getDescripcion(),idcat,id.intValue());
+				tipoActualizado= tipoRepository.actualizarTipo(tipo.getNombre(), tipo.getDescripcion(),idcat,idest,id.intValue());
 				System.out.println("hay.."+tipoActualizado);	
 				
 			}else {
@@ -122,7 +122,7 @@ public class TipoContoller {
 			
 			}else{
 				System.out.println("Entre a un nuevo Tipo");
-				int nuevoTipo = tipoRepository.ingresarTipo(tipo.getNombre(), tipo.getDescripcion(), idcat);
+				int nuevoTipo = tipoRepository.ingresarTipo(tipo.getNombre(), tipo.getDescripcion(), idcat,idest);
 				System.out.println("hay.."+nuevoTipo);
 			}
 			
